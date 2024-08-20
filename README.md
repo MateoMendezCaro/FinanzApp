@@ -37,7 +37,7 @@ El propósito de FinanzApp es empoderar a las personas para que puedan tomar dec
 - Alejandro Pulgarin Gutierrez
 - Mateo Mendez Caro
 
-      ## Cronograma
+    ## Cronograma
   
     ## Mes 1 (Semanas 1-4): Planificación y Diseño Inicial
 
