@@ -18,7 +18,7 @@ El propósito de FinanzApp es empoderar a las personas para que puedan tomar dec
     
    4. **Diagrama de Barras de Ingresos y Egresos**: Los usuarios podrán visualizar sus ingresos y egresos a lo largo del tiempo mediante un diagrama de barras. Esta herramienta gráfica permitirá una comprensión clara y rápida de los patrones de gasto e ingreso, ayudando a los usuarios a tomar decisiones informadas sobre su presupuesto y ahorros.
     
-    ## Tecnologías a Utilizar
+## Tecnologías a Utilizar
 
   1. **Android Studio**: Será nuestro entorno de desarrollo integrado (IDE) principal, donde crearemos y gestionaremos todo el proyecto. Android Studio nos proporciona herramientas robustas para escribir, depurar y optimizar nuestro código, además de gestionar los recursos de la aplicación.
   
@@ -36,7 +36,8 @@ El propósito de FinanzApp es empoderar a las personas para que puedan tomar dec
 - Juan Manuel Cardona Barrientos
 - Alejandro Pulgarin Gutierrez
 - Mateo Mendez Caro
-  
+
+      ## Cronograma
   
     ## Mes 1 (Semanas 1-4): Planificación y Diseño Inicial
 
