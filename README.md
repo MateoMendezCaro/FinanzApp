@@ -37,3 +37,46 @@ El propósito de FinanzApp es empoderar a las personas para que puedan tomar dec
 - Alejandro Pulgarin Gutierrez
 - Mateo Mendez Caro
   
+  
+    ## Mes 1 (Semanas 1-4): Planificación y Diseño Inicial
+
+**Objetivo:** Definir el alcance de la aplicación y diseñar el apartado principal.
+- **Tareas:**
+    -   Definir los requerimientos funcionales y no funcionales.
+    -   Crear bocetos (wireframes) de la interfaz principal.
+    -   Diseñar la estructura básica de la aplicación.
+
+    ## Mes 2 (Semanas 5-8): Desarrollo del Apartado Principal
+**Objetivo**: Implementar la interfaz principal y familiarizarse con Android Studio.
+- **Tareas:**
+    - Configurar el proyecto en Android Studio.
+    - Implementar el diseño de la pantalla principal.
+    - Integrar la navegación básica entre pantallas.
+
+    ## Mes 3 (Semanas 9-12): Desarrollo de Funcionalidades Básicas
+**Objetivo:** Implementar las funciones principales (como el ingreso de ingresos y gastos).
+- **Tareas:**
+    - Desarrollar el formulario para ingresar ingresos.
+    - Desarrollar el formulario para ingresar gastos.
+    - Configurar la base de datos para almacenar estos registros.
+
+    ## Mes 4 (Semanas 13-16): Integración de Funcionalidades
+**Objetivo:** Integrar y conectar las funcionalidades dentro de la app.
+- **Tareas:**
+    - Implementar la visualización de los datos ingresados.
+    - Crear gráficos o tablas que muestren los ingresos y gastos.
+    - Añadir validaciones y manejo de errores.
+
+    ## Mes 5 (Semanas 17-20): Optimización y Testing
+**Objetivo:** Optimizar el rendimiento y realizar pruebas de la app.
+- **Tareas:**
+    - Revisar y optimizar el código.
+    - Realizar pruebas de usabilidad.
+    - Identificar y corregir errores.
+
+    ## Mes 6 (Semanas 21-24): Documentación y Preparación para el Lanzamiento
+**Objetivo:** Documentar el desarrollo y preparar la app para su entrega final o lanzamiento.
+- **Tareas:**
+    - Redactar la documentación del proyecto.
+    - Preparar materiales de presentación o lanzamiento (si aplica).
+    - Subir la app a la Play Store (si es parte del proyecto).
