@@ -81,3 +81,4 @@ El propósito de FinanzApp es empoderar a las personas para que puedan tomar dec
     - Redactar la documentación del proyecto.
     - Preparar materiales de presentación o lanzamiento (si aplica).
     - Subir la app a la Play Store (si es parte del proyecto).
+    

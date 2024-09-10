@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_image"
+    tools:context=".MainActivity">
+
+    <!-- Barra superior -->
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#5A7187"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Menú icono -->
+        <ImageView
+            android:id="@+id/menuIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_menu" /> <!-- Icono del menú -->
+
+        <!-- Fecha -->
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="02 DE AGOSTO DEL 2024"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+    <!-- Balance circular -->
+    <RelativeLayout
+        android:id="@+id/balanceCircle"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Círculo exterior de colores -->
+        <ImageView
+            android:id="@+id/colorRing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/color_ring" /> <!-- Imagen de anillo de colores -->
+
+        <!-- Texto del balance -->
+        <TextView
+            android:id="@+id/balanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="000,000.000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+        <!-- Texto 'Balance' -->
+        <TextView
+            android:id="@+id/balanceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/balanceText"
+            android:layout_centerHorizontal="true"
+            android:text="BALANCE"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:paddingBottom="10dp" />
+    </RelativeLayout>
+
+    <!-- Botón de agregar (lado derecho) -->
+
+    <!-- Botón de ingresos -->
+
+    <ImageButton
+        android:id="@+id/addButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/circle_background"
+        android:src="@drawable/ic_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/balanceCircle"
+        app:tint="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/ingresosLayout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_background"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/balanceCircle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_add_circle"
+            android:tint="@color/green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingresos"
+            android:textSize="18sp"
+            android:paddingStart="16dp"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <!-- Botón de egresos -->
+    <LinearLayout
+        android:id="@+id/egresosLayout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_background"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/ingresosLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_remove_circle"
+            android:tint="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Egresos"
+            android:textSize="18sp"
+            android:paddingStart="16dp"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <!-- Botón de ahorros -->
+    <LinearLayout
+        android:id="@+id/ahorrosLayout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_background"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/egresosLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_piggy_bank"
+            android:tint="@color/blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ahorros"
+            android:textSize="18sp"
+            android:paddingStart="16dp"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <!-- Barra inferior de navegación -->
+    <LinearLayout
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#5A7187"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Icono 1 -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_home"
+            android:layout_margin="10dp"
+            app:tint="@color/white" />
+
+        <!-- Icono 2 -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_finger"
+            android:layout_margin="10dp"
+            app:tint="@color/white" />
+
+        <!-- Icono 3 -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_doc"
+            android:layout_margin="10dp"
+            app:tint="@color/white" />
+
+        <!-- Icono 4 -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_save"
+            android:layout_margin="10dp"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
