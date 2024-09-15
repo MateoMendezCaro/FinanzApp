@@ -1,5 +1,6 @@
 package com.example.finanzapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,6 +25,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.example.finanzapp.ui.theme.FinanzappTheme
+import com.example.finanzapp.ui.theme.barsblue
+
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun Backgrounder(content:  @Composable () -> Unit) {
     val backgroundImage = painterResource(id = R.drawable.fondo)
@@ -79,7 +83,7 @@ fun TopBar() {
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF3C5A99)
+            containerColor = barsblue
         ),
         navigationIcon = {
             IconButton(onClick = { /* TODO: Handle menu action */ }) {
@@ -96,7 +100,7 @@ fun TopBar() {
 @Composable
 fun BottomNavigationBar() {
     BottomAppBar(
-        containerColor = Color(0xFF3C5A99),
+        containerColor = barsblue,
         content = {
             Row(
                 modifier = Modifier.fillMaxWidth(),
