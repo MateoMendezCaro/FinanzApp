@@ -53,18 +53,20 @@ fun MovementsScreen(navController: NavHostController) {
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                     modifier = Modifier
+                        .padding(11.dp)
                         .align(Alignment.Center)
                         .background(
                             brush = Brush.horizontalGradient(
                                 listOf(
-                                    Color(0xFF009FFD),
-                                    Color(0xFF2A2A72)
+                                    Color(0xFF0066CC),
+                                    Color(0xFF6D8AA8)
                                 )
                             ),
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(5.dp)
                         )
                         .padding(12.dp)
                 )
+
             }
 
             // Ingresos
@@ -94,14 +96,13 @@ fun MovementSection(title: String, movements: List<Movement>) {
         }
     }
 }
-
 @Composable
 fun MovementRow(movement: Movement) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .background(Color(0xFFF5F5F5), shape = RoundedCornerShape(8.dp))
+            .background(Color(0xFFF5F5F5), shape = RoundedCornerShape(9.dp))
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -117,7 +118,6 @@ fun MovementRow(movement: Movement) {
                 color = if (movement.isIncome) Color.Green else Color.Red
             )
         }
-
         Text(
             text = movement.amount,
             fontSize = 18.sp,

@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -69,7 +68,12 @@ fun MainScreen() {
                     startDestination = "login",
                     modifier = Modifier.padding(innerPadding)
                 ) {
-                    composable("home") { HomeScreen(navController) }
+                    // Ruta de HomeScreen con el parámetro obligatorio userName
+                    composable("home/{userName}") { backStackEntry ->
+                        val userName = backStackEntry.arguments?.getString("userName")  // Obtén el nombre del usuario
+                        HomeScreen(navController, userName)
+                    }
+
                     composable("login") { InitialScreen(navController) }
                     composable("movements") { MovementsScreen(navController) }
                 }
