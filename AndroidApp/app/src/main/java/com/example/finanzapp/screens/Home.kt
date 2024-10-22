@@ -10,13 +10,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -26,11 +28,15 @@ import com.example.finanzapp.ui.theme.darkblue
 import com.example.finanzapp.ui.theme.barsblue
 import androidx.navigation.NavHostController
 import com.example.finanzapp.Backgrounder
-import kotlinx.coroutines.launch
+import androidx.compose.runtime.*
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen(navController: NavHostController, userName: String?) {
+    // Obtener el nombre de usuario desde los argumentos de la navegación
+    val name = navController.currentBackStackEntry?.arguments?.getString("userName") ?: userName
+    var showDialog by remember { mutableStateOf(true) }
     Backgrounder {
         Column(
             modifier = Modifier
@@ -38,6 +44,22 @@ fun HomeScreen(navController: NavHostController) {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(
+                text = "Hola $userName",  // Muestra el saludo con el nombre del usuario
+                style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            )
+            if (showDialog) {
+                AlertDialog(
+                    onDismissRequest = { showDialog = false },
+                    title = { Text("Saludo") },
+                    text = { Text("Hola, $userName") },
+                    confirmButton = {
+                        TextButton(onClick = { showDialog = false }) {
+                            Text("Cerrar")
+                        }
+                    }
+                )
+            }
                     // Caja que muestra el gráfico y la cantidad
                     Box(
                         contentAlignment = Alignment.Center,

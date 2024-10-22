@@ -6,7 +6,12 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -38,34 +43,49 @@ fun Backgrounder(content: @Composable () -> Unit) {
 // Pantalla inicial
 @Composable
 fun InitialScreen(navController: NavHostController) {
+    var userName by remember { mutableStateOf("") }  // Estado para el nombre del usuario
+
     Backgrounder {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp),
-            verticalArrangement = Arrangement.Center, // Alinear al centro verticalmente
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Título "FinanzApp"
             Text(
                 text = "FinanzApp",
                 style = TextStyle(
                     fontSize = 36.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
-                    fontFamily = FontFamily.Default // Aplica la fuente personalizada
+                    fontFamily = FontFamily.Default
                 )
             )
 
-            Spacer(modifier = Modifier.height(190.dp))  // Espacio entre el título y los botones
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Campo de texto para ingresar el nombre
+            TextField(
+                value = userName,
+                onValueChange = { userName = it },
+                label = { Text("Nombre") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             // Botón de Iniciar Sesión
             Button(
-                onClick = { navController.navigate("home") }, // Navega a la pantalla de inicio
+                onClick = {
+                    navController.navigate("home/$userName") {
+                        launchSingleTop = true
+                    }
+                },
                 shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFACB6C7),  // Color del fondo del botón
-                    contentColor = Color.Black          // Color del texto del botón
+                    containerColor = Color(0xFFACB6C7),
+                    contentColor = Color.Black
                 ),
                 modifier = Modifier
                     .fillMaxWidth(0.7f)
@@ -74,16 +94,15 @@ fun InitialScreen(navController: NavHostController) {
                 Text(text = "Iniciar sesión")
             }
 
-            // Espacio de 120 dp (aproximadamente 3 cm) entre los botones
             Spacer(modifier = Modifier.height(120.dp))
 
             // Botón de Registrarse
             Button(
-                onClick = { /* Acción para registrarse */ }, // Agrega la acción de navegación para registrarse
+                onClick = { /* Acción para registrarse */ },
                 shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFACB6C7),  // Color del fondo del botón
-                    contentColor = Color.Black          // Color del texto del botón
+                    containerColor = Color(0xFFACB6C7),
+                    contentColor = Color.Black
                 ),
                 modifier = Modifier
                     .fillMaxWidth(0.7f)
