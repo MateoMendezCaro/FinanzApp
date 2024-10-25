@@ -22,6 +22,9 @@ import com.example.finanzapp.ui.theme.FinanzappTheme
 import com.example.finanzapp.ui.theme.barsblue
 import com.example.finanzapp.screens.*
 import kotlinx.coroutines.CoroutineScope
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -85,10 +88,11 @@ fun MainScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(drawerState: DrawerState, scope: CoroutineScope) {
+    val currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd 'de' MMMM 'del' yyyy"))
     TopAppBar(
         title = {
             Text(
-                text = "02 DE AGOSTO DEL 2024",
+                text = currentDate,
                 color = Color.White
             )
         },
