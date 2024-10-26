@@ -34,9 +34,9 @@ import androidx.compose.runtime.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController, userName: String?) {
-    // Obtener el nombre de usuario desde los argumentos de la navegación
     val name = navController.currentBackStackEntry?.arguments?.getString("userName") ?: userName
     var showDialog by remember { mutableStateOf(true) }
+
     Backgrounder {
         Column(
             modifier = Modifier
@@ -45,9 +45,11 @@ fun HomeScreen(navController: NavHostController, userName: String?) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Hola $userName",  // Muestra el saludo con el nombre del usuario
+                text = "Hola $userName",
                 style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold)
             )
+            Spacer(modifier = Modifier.height(8.dp)) // Margen debajo del nombre
+
             if (showDialog) {
                 AlertDialog(
                     onDismissRequest = { showDialog = false },
@@ -60,84 +62,82 @@ fun HomeScreen(navController: NavHostController, userName: String?) {
                     }
                 )
             }
-                    // Caja que muestra el gráfico y la cantidad
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(300.dp)
-                            .clip(CircleShape)
-                            .background(darkblue)
-                    ) {
-                        Text(
-                            text = "000,000.000",
-                            color = Color.White,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 24.sp
-                        )
-                        Image(
-                            painter = painterResource(id = R.drawable.graficotorta),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Fit
-                        )
-                    }
 
-                    Spacer(modifier = Modifier.height(5.dp))
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(300.dp)
+                    .clip(CircleShape)
+                    .background(darkblue)
+            ) {
+                Text(
+                    text = "000,000.000",
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp
+                )
+                Image(
+                    painter = painterResource(id = R.drawable.graficotorta),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Fit
+                )
+            }
 
-                    // Botón flotante de agregar (Plus Button)
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(end = 16.dp),
-                        horizontalArrangement = Arrangement.End
-                    ) {
-                        FloatingActionButton(
-                            onClick = { /* Acción */ },
-                            modifier = Modifier.size(48.dp),
-                            containerColor = Color.White,
-                            contentColor = Color.Black
-                        ) {
-                            Icon(
-                                painterResource(id = R.drawable.add_24px),
-                                contentDescription = "Add"
-                            )
-                        }
-                    }
+            Spacer(modifier = Modifier.height(16.dp))
 
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    // Botones para Ingresos, Egresos y Ahorros
-                    Column(
-                        modifier = Modifier.fillMaxWidth(0.9f),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        ActionButton(
-                            text = "Ingresos",
-                            iconId = R.drawable.plus,
-                            color = Color(0xFF00C853),
-                            onClick = { /* Acción de navegación */ }  // Navega a Movements
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        ActionButton(
-                            text = "Egresos",
-                            iconId = R.drawable.minus,
-                            color = Color(0xFFD50000),
-                            onClick = { /* Acción de navegación */ }
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        ActionButton(
-                            text = "Ahorros",
-                            iconId = R.drawable.savings_24px,
-                            color = Color(0xFFFDD2AC),
-                            onClick = { /* Acción de navegación */ }
-                        )
-                    }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 16.dp),
+                horizontalArrangement = Arrangement.End
+            ) {
+                FloatingActionButton(
+                    onClick = { /* Acción */ },
+                    modifier = Modifier.size(48.dp),
+                    containerColor = Color.White,
+                    contentColor = Color.Black
+                ) {
+                    Icon(
+                        painterResource(id = R.drawable.add_24px),
+                        contentDescription = "Add"
+                    )
                 }
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Columna de botones de acción con scroll
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .verticalScroll(rememberScrollState()), // Habilitar scroll vertical
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                ActionButton(
+                    text = "Ingresos",
+                    iconId = R.drawable.plus,
+                    color = Color(0xFF00C853),
+                    onClick = { /* Acción de navegación */ }
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                ActionButton(
+                    text = "Egresos",
+                    iconId = R.drawable.minus,
+                    color = Color(0xFFD50000),
+                    onClick = { /* Acción de navegación */ }
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                ActionButton(
+                    text = "Ahorros",
+                    iconId = R.drawable.savings_24px,
+                    color = Color(0xFFFDD2AC),
+                    onClick = { /* Acción de navegación */ }
+                )
+            }
         }
-
-
-
+    }
+}
 // Función para los botones de acción
 @Composable
 fun ActionButton(text: String, iconId: Int, color: Color, onClick: () -> Unit) {
@@ -167,48 +167,4 @@ fun ActionButton(text: String, iconId: Int, color: Color, onClick: () -> Unit) {
             textAlign = TextAlign.Start
         )
     }
-}
-
-// Contenido del menú lateral
-@Composable
-fun MenuContent(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState())
-    ) {
-        Text(text = "Perfil del Usuario", modifier = Modifier.padding(16.dp))
-        Text(text = "Notificaciones", modifier = Modifier.padding(16.dp))
-        Text(text = "Seguridad", modifier = Modifier.padding(16.dp))
-        Text(text = "Ayuda y Soporte", modifier = Modifier.padding(16.dp))
-        Text(text = "Información", modifier = Modifier.padding(16.dp))
-        Text(text = "Configuración", modifier = Modifier.padding(16.dp))
-    }
-}
-
-// Barra superior con botón de menú
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopBar(onMenuClick: () -> Unit) {
-    TopAppBar(
-        title = {
-            Text(
-                text = "02 DE AGOSTO DEL 2024",
-                color = Color.White
-            )
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = barsblue
-        ),
-        navigationIcon = {
-            IconButton(onClick = { onMenuClick() }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.menu_24px),
-                    contentDescription = "Menu",
-                    tint = Color.White
-                )
-            }
-        }
-    )
 }
