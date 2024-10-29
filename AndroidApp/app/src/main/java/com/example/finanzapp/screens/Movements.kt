@@ -11,10 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.finanzapp.Backgrounder
 import androidx.compose.ui.graphics.Brush
 
@@ -34,7 +32,7 @@ val expenses = listOf(
 )
 
 @Composable
-fun MovementsScreen(navController: NavHostController) {
+fun MovementsScreen() {
     Backgrounder {
         Column(
             modifier = Modifier
@@ -49,7 +47,7 @@ fun MovementsScreen(navController: NavHostController) {
             ) {
                 Text(
                     text = "MOVIMIENTOS",
-                    fontSize = 20.sp,
+                    fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                     modifier = Modifier
@@ -87,6 +85,7 @@ fun MovementSection(title: String, movements: List<Movement>) {
             text = title,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
+            color = Color.Black,
             modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
         )
 
@@ -110,7 +109,8 @@ fun MovementRow(movement: Movement) {
             Text(
                 text = movement.account,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Normal
+                fontWeight = FontWeight.Normal,
+                color = Color.Black,
             )
             Text(
                 text = if (movement.isIncome) "Ingreso" else "Egreso",

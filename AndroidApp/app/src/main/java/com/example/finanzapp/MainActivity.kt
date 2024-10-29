@@ -1,5 +1,8 @@
 package com.example.finanzapp
 
+import MenuScreen
+import ReportsScreen
+import SavesScreen
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -24,7 +27,6 @@ import com.example.finanzapp.screens.*
 import kotlinx.coroutines.CoroutineScope
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -57,9 +59,15 @@ fun MainScreen() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
+    // Estados para el nombre de usuario y el diálogo
+    val userName = remember { mutableStateOf<String?>(null) }
+    var showDialog by remember { mutableStateOf(true) }  // Estado persistente del diálogo
+
     ModalNavigationDrawer(
         drawerState = drawerState,
-        drawerContent = { MenuScreen(navController) }
+        drawerContent = {
+            MenuScreen(userName.value)  // Pasamos `userName.value` a `MenuScreen`
+        }
     ) {
         Scaffold(
             topBar = { TopBar(drawerState, scope) },
@@ -71,14 +79,14 @@ fun MainScreen() {
                     startDestination = "login",
                     modifier = Modifier.padding(innerPadding)
                 ) {
-                    // Ruta de HomeScreen con el parámetro obligatorio userName
                     composable("home/{userName}") { backStackEntry ->
-                        val userName = backStackEntry.arguments?.getString("userName")  // Obtén el nombre del usuario
-                        HomeScreen(navController, userName)
+                        userName.value = backStackEntry.arguments?.getString("userName")
+                        HomeScreen(userName.value, showDialog) { showDialog = false }  // Pasamos showDialog y el callback para cerrarlo
                     }
-
                     composable("login") { InitialScreen(navController) }
-                    composable("movements") { MovementsScreen(navController) }
+                    composable("movements") { MovementsScreen() }
+                    composable("saves") { SavesScreen() }
+                    composable("reports") { ReportsScreen() }
                 }
             }
         }
@@ -131,31 +139,33 @@ fun BottomNavigationBar(navController: NavHostController) {
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = { navController.navigate("home") }) {
+                IconButton(onClick = {
+                    navController.navigate("home/${navController.previousBackStackEntry?.arguments?.getString("userName")}")
+                }) {
                     Icon(
                         painter = painterResource(id = R.drawable.home_24px),
                         contentDescription = "Home",
                         tint = Color.White
                     )
                 }
-                IconButton(onClick = { navController.navigate("login") }) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.pan_tool_alt_24px),
-                        contentDescription = "Login",
-                        tint = Color.White
-                    )
-                }
                 IconButton(onClick = { navController.navigate("movements") }) {
                     Icon(
-                        painter = painterResource(id = R.drawable.folder_open_24px),
+                        painter = painterResource(id = R.drawable.pan_tool_alt_24px),
                         contentDescription = "Movements",
                         tint = Color.White
                     )
                 }
-                IconButton(onClick = { navController.navigate("menu") }) {
+                IconButton(onClick = { navController.navigate("saves") }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.folder_open_24px),
+                        contentDescription = "Saves",
+                        tint = Color.White
+                    )
+                }
+                IconButton(onClick = { navController.navigate("reports") }) {
                     Icon(
                         painter = painterResource(id = R.drawable.menu_book_24px),
-                        contentDescription = "Menu",
+                        contentDescription = "Reports",
                         tint = Color.White
                     )
                 }

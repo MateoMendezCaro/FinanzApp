@@ -29,7 +29,6 @@ fun Backgrounder(content: @Composable () -> Unit) {
     val gradient = Brush.verticalGradient(
         colors = listOf(Color(0xFFB2EBF2), Color(0xFF00796B), Color(0xFF9AD1DA))
     )
-
     // Aplicar el degradado a un Box
     Box(
         modifier = Modifier
