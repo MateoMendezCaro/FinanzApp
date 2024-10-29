@@ -24,7 +24,7 @@ El propósito de FinanzApp es empoderar a las personas para que puedan tomar dec
   
  2.  **Kotlin**: El lenguaje de programación principal para desarrollar la lógica de FinanzApp. Kotlin es moderno, seguro y compatible con Java, lo que lo convierte en una excelente opción para el desarrollo de aplicaciones Android.
   
- 3.  **XML para Layouts**: Utilizaremos XML para diseñar las interfaces de usuario (UI) de FinanzApp. Esta tecnología nos permite definir de manera clara y estructurada cómo se verá la aplicación en diferentes dispositivos Android.
+ 3.  **Compose para Layouts**: Utilizaremos Jetpack Compose para diseñar las interfaces de usuario (UI) de FinanzApp. Esta tecnología nos permite definir de manera declarativa y sencilla cómo se verá la aplicación, facilitando la creación de UI modernas y responsivas en diferentes dispositivos Android.
   
  4.  **SQLite para Almacenamiento Local**: Implementaremos SQLite para manejar el almacenamiento local de datos en la aplicación, como el historial de transacciones, documentos financieros y configuraciones del usuario. Esto asegurará que los datos importantes estén disponibles incluso sin conexión a internet.
   
