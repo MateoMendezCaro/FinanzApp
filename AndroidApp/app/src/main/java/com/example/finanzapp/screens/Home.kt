@@ -25,18 +25,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.finanzapp.R
 import com.example.finanzapp.ui.theme.darkblue
-import com.example.finanzapp.ui.theme.barsblue
-import androidx.navigation.NavHostController
 import com.example.finanzapp.Backgrounder
 import androidx.compose.runtime.*
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavHostController, userName: String?) {
-    val name = navController.currentBackStackEntry?.arguments?.getString("userName") ?: userName
-    var showDialog by remember { mutableStateOf(true) }
-
+fun HomeScreen(userName: String?, showDialog: Boolean, onDialogDismiss: () -> Unit) {
     Backgrounder {
         Column(
             modifier = Modifier
@@ -48,15 +43,15 @@ fun HomeScreen(navController: NavHostController, userName: String?) {
                 text = "Hola $userName",
                 style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold)
             )
-            Spacer(modifier = Modifier.height(8.dp)) // Margen debajo del nombre
+            Spacer(modifier = Modifier.height(8.dp))
 
             if (showDialog) {
                 AlertDialog(
-                    onDismissRequest = { showDialog = false },
+                    onDismissRequest = onDialogDismiss,
                     title = { Text("Saludo") },
                     text = { Text("Hola, $userName") },
                     confirmButton = {
-                        TextButton(onClick = { showDialog = false }) {
+                        TextButton(onClick = onDialogDismiss) {
                             Text("Cerrar")
                         }
                     }
